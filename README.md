@@ -24,7 +24,7 @@ https://yinzhedy.github.io/03-Homework-Password-Generator/
 
 The following image demonstrates the web application's appearance and functionality:
 
-![image](./assets\Images\screenshot.png)
+![image](./assets/Images/screenshot.png)
 
 ## Credits
 - Jack H. Ault
