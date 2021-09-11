@@ -81,8 +81,6 @@
 
 // setTime();
 
-
-
 // Password Generator
 
 const characterAmountRange = document.getElementById('characterAmountRange');
@@ -101,9 +99,47 @@ const symCharCodes = arrayFromLowToHigh(33, 47).concat(arrayFromLowToHigh(58, 64
 characterAmountNumber.addEventListener('input', syncCharacterAmount);
 characterAmountRange.addEventListener('input', syncCharacterAmount);
 
+// includeNumEl
+// includeSymEl
+// includeUpperEl
 
+// function promptMe() {
 
-form.addEventListener('submit', e => {
+//   function promptMeNum () {
+//     includeNumEl = prompt("Would you like your password to include #s? Type Yes or No");
+//       if (includeNumEl == Yes) {
+//         includeNumEl = true
+//         includeNumEl = checked;}
+//       else (includeNumEl == No)
+//         includeNumEl = false
+//       return;
+      
+//   }
+
+//   function promptMeSym () {
+//     includeSymEl = (prompt("Would you like your password to include symbols? Type Yes or No"));
+//       if (includeSymEl == Yes) {
+//         includeSymEl = true
+//         includeSymEl = checked;}
+//       else (includeSymEl == No)
+//         includeSymEl = false; 
+//       return;
+//   }
+
+//   function promptMeUpper () {
+//     includeUpperEl = (prompt("Would you like your password to include numbers? Type Yes or No"));
+//       if (includeUpperEl == Yes) {
+//         includeSymEl = true
+//         includeSymEl = checked;}
+//       else (includeUpperEl == No)
+//         includeSymEl = false; 
+//       return;
+//   }
+//   return false;
+// }
+// form.addEventListener('click', prompMe()) 
+
+form.addEventListener( "submit", e => {
   e.preventDefault()
   const characterAmount = characterAmountNumber.value
   const includeUpper = includeUpperEl.checked
