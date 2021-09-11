@@ -14,9 +14,82 @@
 // THEN a password is generated that matches the selected criteria
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
-// Assignment Code
 
 
+
+// Welcome Splash Screen
+
+var welcomescreen = document.getElementsByClassName("welcomescreen")
+
+(function () {
+  $(window).load(function () {
+      setTimeout(function () {
+         $('.loader').fadeOut();
+          start();
+      }, 200);
+  });
+  $(document).ready(function () {
+      $('.splash').slideToggle(3000);
+      $('.frame1').delay(3200).show('slide', { direction: 'right' }, 1000);
+      $('.frame2').delay(3300).show('slide', { direction: 'left' }, 1000);
+      $('.frame3').delay(3800).slideToggle(1000);
+      $('.frame3').css('line-height', '400px');
+      $('.frame2').delay(4000).hide('slide', { direction: 'left' }, 1000);
+      $('.frame1').delay(4200).hide('slide', { direction: 'right' }, 1000);
+      $('.splash').delay(4500).slideToggle(2000);
+      $('.frame3').delay(4800).transition({
+          scale: [
+              1.2,
+              1.2
+          ],
+          duration: 1000
+      });
+      $('.splash').delay(500).animate({ width: '50%' }, 1000);
+  });
+}.call(this));
+
+var timeleft = 4;
+var Timer = setInterval(function splashScreenTimer(){
+  if(timeleft <= 0){
+    welcomescreen.setAttribute("display", "none")
+    clearInterval(downloadTimer);
+  }
+  welcomescreen.value = 4 - timeleft;
+  timeleft -= 1;
+}, 1000);
+Timer;
+
+
+// Welcome Screen timer
+
+var timeEl = document.getElementByClass("loader");
+
+var mainEl = document.getElementByClass("splash");
+
+var secondsLeft = 3;
+
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent =0 " Welcome! Entering site in " + secondsLeft + " seconds...";
+
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+
+  }, 1000);
+}
+
+function sendMessage() {
+  welcomescreen.removeAttribute("background-image")
+}
+
+setTime();
+
+
+
+// Password Generator
 const characterAmountRange = document.getElementById('characterAmountRange');
 const characterAmountNumber = document.getElementById('characterAmountNumber');
 const includeUpperEl = document.getElementById('includeUpper');
@@ -32,6 +105,8 @@ const symCharCodes = arrayFromLowToHigh(33, 47).concat(arrayFromLowToHigh(58, 64
 
 characterAmountNumber.addEventListener('input', syncCharacterAmount);
 characterAmountRange.addEventListener('input', syncCharacterAmount);
+
+
 
 form.addEventListener('submit', e => {
   e.preventDefault()
