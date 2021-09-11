@@ -18,6 +18,7 @@
 
 
 var generateButton = document.querySelector("#generate");
+var formSubmitButtom = document.getElementById(submit);
 var charRange = document.getElementById(charRange);
 var charNum = document.getElementById(charNum);
 var form = document.getElementById(form);
@@ -25,13 +26,13 @@ const newPassword = document.getElementById(password)
 // var includeUpper = document.getElementById(includeUpper);
 // var includeNum = document.getElementById(includeNum);
 // var includeSym = document.getElementById(includeSym);
-const includeUpper = document.getElementById(includeUpper);
-const includeNum = document.getElementById(includeNum);
-const includeSym = document.getElementById(includeSym);
-const upperCharCodes = arrayCharCodes(65, 90)
-const lowerCharCodes = arrayCharCodes(97, 122)
-const numCharCodes = arrayCharCodes(48, 57)
-const symCharCodes = arrayCharCodes(33, 47).concat(
+var includeUpper = document.getElementById(includeUpper);
+var includeNum = document.getElementById(includeNum);
+var includeSym = document.getElementById(includeSym);
+var upperCharCodes = arrayCharCodes(65, 90)
+var lowerCharCodes = arrayCharCodes(97, 122)
+var numCharCodes = arrayCharCodes(48, 57)
+var symCharCodes = arrayCharCodes(33, 47).concat(
                     arrayCharCodes(58,64)
                     ).concat(
                     arrayCharCodes(91,96)
@@ -56,13 +57,13 @@ form.addEventListener("sumbit", c => {
   const includeUpper = includeUpper.checked
   const includeNum = includeNum.checked
   const includeSym = includeSym.checked
-  const password = generatePassword (characterAmount, includeUpper, includeNum, includeSym)
+  const password = writePassword (characterAmount, includeUpper, includeNum, includeSym)
   newPassword.innerText = password
 
 })
 
 function arrrayCharCodes(low, high) {
-  const array []
+  const array = []
   for (let i = low; i <= high; i++) {
     array.push(i)
   } return;
@@ -84,7 +85,7 @@ function writePassword(characterAmount, includeUpper, includeNum, includeSym) {
 }
 
 function showForm() {
-  form.setAttribute("display", "block")
+  form.removeAttribute("display", "block")
 }
 // Add event listener to generate button
 generateButton.addEventListener("click", writePassword, showForm);
