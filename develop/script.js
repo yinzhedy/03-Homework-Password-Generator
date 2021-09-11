@@ -16,80 +16,75 @@
 // THEN the password is either displayed in an alert or written to the page
 
 
-
 // Welcome Splash Screen
 
-var welcomescreen = document.getElementsByClassName("welcomescreen")
+// var welcomescreen = document.getElementsByClassName("welcomescreen")
 
-(function () {
-  $(window).load(function () {
-      setTimeout(function () {
-         $('.loader').fadeOut();
-          start();
-      }, 200);
-  });
-  $(document).ready(function () {
-      $('.splash').slideToggle(3000);
-      $('.frame1').delay(3200).show('slide', { direction: 'right' }, 1000);
-      $('.frame2').delay(3300).show('slide', { direction: 'left' }, 1000);
-      $('.frame3').delay(3800).slideToggle(1000);
-      $('.frame3').css('line-height', '400px');
-      $('.frame2').delay(4000).hide('slide', { direction: 'left' }, 1000);
-      $('.frame1').delay(4200).hide('slide', { direction: 'right' }, 1000);
-      $('.splash').delay(4500).slideToggle(2000);
-      $('.frame3').delay(4800).transition({
-          scale: [
-              1.2,
-              1.2
-          ],
-          duration: 1000
-      });
-      $('.splash').delay(500).animate({ width: '50%' }, 1000);
-  });
-}.call(this));
+// (function () {
+//   $(window).load(function () {
+//       setTimeout(function () {
+//          $('.loader').fadeOut();
+//           start();
+//       }, 200);
+//   });
 
-var timeleft = 4;
-var Timer = setInterval(function splashScreenTimer(){
-  if(timeleft <= 0){
-    welcomescreen.setAttribute("display", "none")
-    clearInterval(downloadTimer);
-  }
-  welcomescreen.value = 4 - timeleft;
-  timeleft -= 1;
-}, 1000);
-Timer;
+//   $(document).ready(function () {
+//       $('.splash').slideToggle(3000);
+//       $('.frame1').delay(3200).show('slide', { direction: 'right' }, 1000);
+//       $('.frame2').delay(3300).show('slide', { direction: 'left' }, 1000);
+//       $('.frame3').delay(3800).slideToggle(1000);
+//       $('.frame3').css('line-height', '400px');
+//       $('.frame2').delay(4000).hide('slide', { direction: 'left' }, 1000);
+//       $('.frame1').delay(4200).hide('slide', { direction: 'right' }, 1000);
+//       $('.splash').delay(4500).slideToggle(2000);
+//       $('.frame3').delay(4800).transition({
+//           scale: [
+//               1.2,
+//               1.2
+//           ],
+//           duration: 1000
+//       });
+//       $('.splash').delay(500).animate({ width: '50%' }, 1000);
+//   });
+// }.call(this));
+
+// var timeleft = 4;
+// var Timer = setInterval(function splashScreenTimer(){
+//   if(timeleft <= 0){
+//     welcomescreen.setAttribute("display", "none")
+//     clearInterval(downloadTimer);
+//   }
+//   welcomescreen.value = 4 - timeleft;
+//   timeleft -= 1;
+// }, 1000);
 
 
-// Welcome Screen timer
+// // Welcome Screen timer
+// function setTime() {
+//   var secondsLeft = 3;
+//   var timerInterval = function setInterval() {
+//     secondsLeft--;
 
-var timeEl = document.getElementByClass("loader");
+//     if (secondsLeft === 0) {
+//       clearInterval(timerInterval);
+//       removeElement();
+//     }
 
-var mainEl = document.getElementByClass("splash");
+//   }, 1000);
+// }
 
-var secondsLeft = 3;
+// function removeElement(dog) {
+//      var element = document.getElementById(dog);
+//      element.parentNode.removeChild(dog);
+//      }
+// }
 
-function setTime() {
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent =0 " Welcome! Entering site in " + secondsLeft + " seconds...";
-
-    if(secondsLeft === 0) {
-      clearInterval(timerInterval);
-      sendMessage();
-    }
-
-  }, 1000);
-}
-
-function sendMessage() {
-  welcomescreen.removeAttribute("background-image")
-}
-
-setTime();
+// setTime();
 
 
 
 // Password Generator
+
 const characterAmountRange = document.getElementById('characterAmountRange');
 const characterAmountNumber = document.getElementById('characterAmountNumber');
 const includeUpperEl = document.getElementById('includeUpper');

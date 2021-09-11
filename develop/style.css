@@ -108,6 +108,8 @@ h3 {
   padding: 0;
 }
 
+/* Welcome screen */
+/* 
 .welcomescreen {
   background: url(../assets/waving.gif) fixed no-repeat;
   background-size: cover;
@@ -173,4 +175,4 @@ h3 {
   display: block;
   fontsize: 50px;
   margin-top: -360px;
-}
+} */
