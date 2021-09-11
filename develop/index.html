@@ -1,51 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card" id="form">
-        <div class="card-header">
-          <h2>Password criteria form:</h2>
-        </div>
-        <div class="card-body">
-          <label for="includeUpper">Number of Characters</label>
-          <input type="range" min="8" max="50" id="charRange">
-          <input type="number" min="8" max="50" id="charNum">
-          <label for="includeNum">Include Uppercase</label>
-          <input type="checkbox" id="includeUpper">
-          <label for="includeNum">Include Numbers</label>
-          <input type="checkbox" id="includeNum">
-          <label for="IncludeSym">Include Symbols</label>
-          <input type="checkbox" id="includeSym">
-          <button type="submit" id="submit" class="button">Submit Criteria</button>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="./style.css">
+  <title>Password Generator</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Password Generator</h1>
+    <h3 class="password-display" id="passwordDisplay">password</h3>
+    <form id="passwordGeneratorForm" class="form">
+      <label for="characterAmountNumber">Number Of Characters</label>
+      <div class="character-amount-container">
+        <input type="range" min="1" max="50" value="10" id="characterAmountRange">
+        <input class="number-input" type="number" min="1" max="50" value="10" id="characterAmountNumber">
       </div>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
-        </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button type="submit" id="generate" class="button">Generate Password</button>
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+
+      <label for="includeUpper">Include Uppercase</label>
+      <input type="checkbox" id="includeUpper">
+
+      <label for="includeNum">Include Numbers</label>
+      <input type="checkbox" id="includeNum">
+
+      <label for="includeSym">Include Symbols</label>
+      <input type="checkbox" id="includeSym">
+
+      <button type="submit" class="btn">Generate Password</button>
+    </form>
+  </div>
+</body>
 </html>

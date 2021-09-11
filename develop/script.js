@@ -17,77 +17,56 @@
 // Assignment Code
 
 
-var generateButton = document.querySelector("#generate");
-var formSubmitButtom = document.getElementById(submit);
-var charRange = document.getElementById(charRange);
-var charNum = document.getElementById(charNum);
-var form = document.getElementById(form);
-const newPassword = document.getElementById(password)
-// var includeUpper = document.getElementById(includeUpper);
-// var includeNum = document.getElementById(includeNum);
-// var includeSym = document.getElementById(includeSym);
-var includeUpper = document.getElementById(includeUpper);
-var includeNum = document.getElementById(includeNum);
-var includeSym = document.getElementById(includeSym);
-var upperCharCodes = arrayCharCodes(65, 90)
-var lowerCharCodes = arrayCharCodes(97, 122)
-var numCharCodes = arrayCharCodes(48, 57)
-var symCharCodes = arrayCharCodes(33, 47).concat(
-                    arrayCharCodes(58,64)
-                    ).concat(
-                    arrayCharCodes(91,96)
-                    ).concat(
-                    arrayCharCodes(123,126)
-                  )
+const characterAmountRange = document.getElementById('characterAmountRange');
+const characterAmountNumber = document.getElementById('characterAmountNumber');
+const includeUpperEl = document.getElementById('includeUpper');
+const includeNumEl = document.getElementById('includeNum');
+const includeSymEl = document.getElementById('includeSym');
+const form = document.getElementById('passwordGeneratorForm');
+const passwordBox = document.getElementById('passwordDisplay');
 
+const upperCharCodes = arrayFromLowToHigh(65, 90);
+const lowerCharCodes = arrayFromLowToHigh(97, 122);
+const numCharCodes = arrayFromLowToHigh(48, 57);
+const symCharCodes = arrayFromLowToHigh(33, 47).concat(arrayFromLowToHigh(58, 64)).concat(arrayFromLowToHigh(91, 96)).concat(arrayFromLowToHigh(123, 126));
 
-charNum.addEventListener("input", enterChar);
-charRange.addEventListener("input", enterChar);
+characterAmountNumber.addEventListener('input', syncCharacterAmount);
+characterAmountRange.addEventListener('input', syncCharacterAmount);
 
-// Write password to the #password input
-function enterChar(c) {
-  const value = c.target.value
-  charNum.value = value
-  charRange.value = value
-}
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  const characterAmount = characterAmountNumber.value
+  const includeUpper = includeUpperEl.checked
+  const includeNum = includeNumEl.checked
+  const includeSym = includeSymEl.checked
+  const password = generatePassword(characterAmount, includeUpper, includeNum, includeSym)
+  passwordBox.innerText = password
+});
 
-form.addEventListener("sumbit", c => {
-  c.preventDefault()
-  const characterAmount = charNum.value
-  const includeUpper = includeUpper.checked
-  const includeNum = includeNum.checked
-  const includeSym = includeSym.checked
-  const password = writePassword (characterAmount, includeUpper, includeNum, includeSym)
-  newPassword.innerText = password
+function generatePassword(characterAmount, includeUpper, includeNum, includeSym) {
+  let charCodes = lowerCharCodes
+  if (includeUpper) charCodes = charCodes.concat(upperCharCodes)
+  if (includeSym) charCodes = charCodes.concat(symCharCodes)
+  if (includeNum) charCodes = charCodes.concat(numCharCodes)
+  
+  const passwordCharacters = []
+  for (let i = 0; i < characterAmount; i++) {
+    const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+    passwordCharacters.push(String.fromCharCode(characterCode))
+  }
+  return passwordCharacters.join('')
+};
 
-})
-
-function arrrayCharCodes(low, high) {
+function arrayFromLowToHigh(low, high) {
   const array = []
   for (let i = low; i <= high; i++) {
     array.push(i)
-  } return;
-}
-
-function writePassword(characterAmount, includeUpper, includeNum, includeSym) {
-  let charCodes = lowerCharCodes
-  if (includeUpper) charCodes = charCodes.concat(UpperCharCodes)
-  if (includeNum) charCodes = charCodes.concat(NumCharCodes)
-  if (includeSym) charCodes = charCodes.concat(SymCharCodes)
-
-  const passwordChar = []
-  for (let i = 0; i < characterAmound; i++) {
-    const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
-     passwordCharacters.push(String.fromCharCode(characterCode))
   }
-  return passwordCharacters.join("")
+  return array
+};
 
-}
-
-function showForm() {
-  form.removeAttribute("display", "block")
-}
-// Add event listener to generate button
-generateButton.addEventListener("click", writePassword, showForm);
-
-
+function syncCharacterAmount(e) {
+  const value = e.target.value
+  characterAmountNumber.value = value
+  characterAmountRange.value = value
+};
