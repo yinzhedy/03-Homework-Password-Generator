@@ -30,7 +30,13 @@ header {
   color: hsl(206, 17%, 28%);
 }
 
-.card {
+.form {
+  display: none;
+}
+
+
+.card,
+.form {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
   border-width: 1px;
@@ -72,7 +78,7 @@ header {
   clear: both;
 }
 
-.btn {
+.button {
   border: none;
   background-color: hsl(360, 91%, 36%);
   border-radius: 25px;
